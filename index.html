@@ -61,7 +61,7 @@
 
       document.getElementById('openButton').addEventListener('click', () => {
         const datos = { nombre: 'Juan', edad: 30 };
-        const nuevaVentana = window.open('http://localhost:8000/index.html');
+        const nuevaVentana = window.open('https://scintillating-naiad-35d4ed.netlify.app/index.html');
 
         nuevaVentana.addEventListener('load', () => {
           nuevaVentana.postMessage(datos, '*'); // Envía los datos a la nueva ventana
