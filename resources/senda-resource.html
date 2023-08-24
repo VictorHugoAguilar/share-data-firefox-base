@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <title>Senda Resource</title>
+  </head>
+  <body>
+    
+    <div>
+      <h4>LocalStorage</h4>
+      <button id="btn-ls" class="btn btn-info">Guargar en local Storage</button>
+      <p id="local-storage"></p>
+    </div>
+
+    <script>
+      const onLoad = function onLoad() {
+        // Demos para probar almacenaje directamente
+        const btnSavedLocalStorage = document.querySelector('#btn-ls');
+
+        btnSavedLocalStorage.addEventListener('click', () => {
+          localStorage.setItem('test-local-storage', 'test local storage');
+        });
+      };
+
+      // print data when an event is received
+      window.addEventListener('load', onLoad);
+    </script>
+  </body>
+</html>

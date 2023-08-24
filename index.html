@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <title>SENDA enviar por window.open</title>
+  </head>
+  <body>
+    <button id="openButtonSameDomain">
+      Navegar hacia el mismo dominio por window.open pasando los datos por postmessage en la misma pestaña
+    </button>
+    <br />
+    <br />
+    <button id="openButtonSameDomainNewWindow">
+      Navegar hacia el mismo dominio por window.open pasando los datos por postmessage hacia nueva pestaña
+    </button>
+    <br />
+    <br />
+    <button id="openButton">
+      Navegar hacia otro dominio por window.open y enviar los datos por postmessage
+    </button>
+
+    <br />
+    <br />
+
+    <iframe src="http://127.0.0.1:5500/resources/senda-resource.html" width="400" height="300">
+    </iframe>
+
+    <script>
+      // document.getElementById('openButton').addEventListener('click', () => {
+      //   // Cambia la URL a la que deseas navegar
+      //   var url = 'http://localhost:8000/';
+
+      //   var windowOpened = {};
+
+      //   setTimeout(() => {
+      //     // Abre la URL en una nueva ventana o pestaña
+      //     windowOpened = window.open(url, '_top');
+      //   }, 100);
+
+      //   windowOpened.puki = 'patata';
+      // });
+      document.getElementById('openButtonSameDomain').addEventListener('click', () => {
+        const datos = { nombre: 'Juan', edad: 30 };
+        const nuevaVentana = window.open('pagina2.html', '_top');
+
+        nuevaVentana.addEventListener('load', () => {
+          nuevaVentana.postMessage(datos, '*'); // Envía los datos a la nueva ventana
+        });
+      });
+
+      document.getElementById('openButtonSameDomainNewWindow').addEventListener('click', () => {
+        const datos = { nombre: 'Juan', edad: 30 };
+        const nuevaVentana = window.open('pagina2.html');
+
+        nuevaVentana.addEventListener('load', () => {
+          nuevaVentana.postMessage(datos, '*'); // Envía los datos a la nueva ventana
+        });
+      });
+
+      document.getElementById('openButton').addEventListener('click', () => {
+        const datos = { nombre: 'Juan', edad: 30 };
+        const nuevaVentana = window.open('http://localhost:8000/index.html');
+
+        nuevaVentana.addEventListener('load', () => {
+          nuevaVentana.postMessage(datos, '*'); // Envía los datos a la nueva ventana
+        });
+      });
+    </script>
+  </body>
+</html>

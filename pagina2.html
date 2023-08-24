@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagina 2 Mismo dominio</title>
+
+    <h1>Información de la Página 1:</h1>
+    <p id="info"></p>
+  </head>
+  <body>
+    <script>
+      window.addEventListener('message', (event) => {
+        const datos = event.data;
+        document.getElementById(
+          'info'
+        ).textContent = `Nombre: ${datos.nombre}, Edad: ${datos.edad}`;
+      });
+    </script>
+  </body>
+</html>
